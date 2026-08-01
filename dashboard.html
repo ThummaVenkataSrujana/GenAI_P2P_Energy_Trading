@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard | GreenGrid AI{% endblock %}
+
+{% block content %}
+<!-- AI Recommendation & Prediction Banner -->
+<div class="ai-banner">
+  <div class="ai-banner-content">
+    <div class="ai-pill">
+      <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+      {{ ai_prediction.modelName or 'GreenGrid GenAI Prototype' }}
+    </div>
+    <h3>AI Smart Recommendation Spotlight</h3>
+    <p><strong>Recommended Seller:</strong> Pranavi (House 106) offers the lowest market price at <strong>₹9/kWh</strong>. Buying 5 kWh from Pranavi will save you approximately <strong>₹15</strong> compared to peak market rates.</p>
+  </div>
+
+  <div class="ai-banner-stats">
+    <div class="ai-stat-item">
+      <label>Predicted Solar Output</label>
+      <span>{{ ai_prediction.tomorrowGeneration or '24.0' }} kWh</span>
+    </div>
+    <div class="ai-stat-item">
+      <label>Expected Consumption</label>
+      <span>{{ ai_prediction.tomorrowConsumption or '17.0' }} kWh</span>
+    </div>
+    <div class="ai-stat-item">
+      <label>Expected Surplus</label>
+      <span style="color: var(--green-energy);">+{{ ai_prediction.expectedSurplus or '7.0' }} kWh</span>
+    </div>
+    <div class="ai-stat-item">
+      <label>AI Confidence</label>
+      <span style="color: var(--purple-ai);">{{ ai_prediction.confidenceScore or '94.8%' }}</span>
+    </div>
+  </div>
+</div>
+
+<!-- 8 KPI Cards Grid -->
+<div class="kpi-grid">
+  <!-- 1. Today's Consumption -->
+  <div class="glass-panel kpi-card">
+    <div class="kpi-header">
+      <span class="kpi-title">Today's Consumption</span>
+      <div class="kpi-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+      </div>
+    </div>
+    <div class="kpi-value">
+      {{ current_user_data.todayConsumption }} <span class="kpi-unit">kWh</span>
+    </div>
+    <div class="kpi-sub">
+      <span class="trend-down">↓ 4.2%</span> vs yesterday
+    </div>
+  </div>
+
+  <!-- 2. Weekly Consumption -->
+  <div class="glass-panel kpi-card">
+    <div class="kpi-header">
+      <span class="kpi-title">Weekly Consumption</span>
+      <div class="kpi-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      </div>
+    </div>
+    <div class="kpi-value">
+      {{ current_user_data.weeklyConsumption }} <span class="kpi-unit">kWh</span>
+    </div>
+    <div class="kpi-sub">
+      Mon – Sun average
+    </div>
+  </div>
+
+  <!-- 3. Monthly Consumption -->
+  <div class="glass-panel kpi-card">
+    <div class="kpi-header">
+      <span class="kpi-title">Monthly Consumption</span>
+      <div class="kpi-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+      </div>
+    </div>
+    <div class="kpi-value">
+      {{ current_user_data.monthlyConsumption }} <span class="kpi-unit">kWh</span>
+    </div>
+    <div class="kpi-sub">
+      Week 1 – Week 4 total
+    </div>
+  </div>
+
+  <!-- 4. Yearly Consumption -->
+  <div class="glass-panel kpi-card">
+    <div class="kpi-header">
+      <span class="kpi-title">Yearly Consumption</span>
+      <div class="kpi-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+      </div>
+    </div>
+    <div class="kpi-value">
+      {{ current_user_data.yearlyConsumption }} <span class="kpi-unit">kWh</span>
+    </div>
+    <div class="kpi-sub">
+      Jan – Dec forecast
+    </div>
+  </div>
+
+  <!-- 5. Available Energy -->
+  <div class="glass-panel kpi-card green">
+    <div class="kpi-header">
+      <span class="kpi-title">Available Energy</span>
+      <div class="kpi-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line></svg>
+      </div>
+    </div>
+    <div class="kpi-value" style="color: var(--green-energy);">
+      {{ current_user_data.availableEnergy }} <span class="kpi-unit">kWh</span>
+    </div>
+    <div class="kpi-sub">
+      Ready for P2P trade
+    </div>
+  </div>
+
+  <!-- 6. Wallet Balance -->
+  <div class="glass-panel kpi-card">
+    <div class="kpi-header">
+      <span class="kpi-title">Wallet Balance</span>
+      <div class="kpi-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"></path><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"></path><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4z"></path></svg>
+      </div>
+    </div>
+    <div class="kpi-value" style="color: var(--cyan-primary);">
+      ₹{{ "%.2f"|format(current_user_data.walletBalance) }}
+    </div>
+    <div class="kpi-sub">
+      Live Microgrid Credits
+    </div>
+  </div>
+
+  <!-- 7. Energy Sold -->
+  <div class="glass-panel kpi-card green">
+    <div class="kpi-header">
+      <span class="kpi-title">Energy Sold</span>
+      <div class="kpi-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+      </div>
+    </div>
+    <div class="kpi-value">
+      {{ current_user_data.energyShared }} <span class="kpi-unit">kWh</span>
+    </div>
+    <div class="kpi-sub">
+      Earned ₹{{ "%.2f"|format(current_user_data.energyShared * 12.0) }}
+    </div>
+  </div>
+
+  <!-- 8. Energy Bought -->
+  <div class="glass-panel kpi-card orange">
+    <div class="kpi-header">
+      <span class="kpi-title">Energy Bought</span>
+      <div class="kpi-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="17" y1="17" x2="7" y2="7"></line><polyline points="17 7 7 7 7 17"></polyline></svg>
+      </div>
+    </div>
+    <div class="kpi-value" style="color: var(--orange-solar);">
+      {{ current_user_data.energyPurchased }} <span class="kpi-unit">kWh</span>
+    </div>
+    <div class="kpi-sub">
+      From neighborhood grid
+    </div>
+  </div>
+</div>
+
+<!-- Consumption Charts Section -->
+<div class="charts-section">
+  <div class="glass-panel chart-card">
+    <div class="chart-header">
+      <div class="chart-title">
+        <h3>Neighborhood Microgrid Energy Analytics</h3>
+      </div>
+      <div class="chart-tabs">
+        <button class="chart-tab active" data-period="weekly">Weekly (Mon–Sun)</button>
+        <button class="chart-tab" data-period="monthly">Monthly (W1–W4)</button>
+        <button class="chart-tab" data-period="yearly">Yearly (Jan–Dec)</button>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="consumptionChart"></canvas>
+    </div>
+  </div>
+</div>
+{% endblock %}

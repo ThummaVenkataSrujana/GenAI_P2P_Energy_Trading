@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block title %}My Profile | GreenGrid AI{% endblock %}
+
+{% block content %}
+<div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px;">
+  <!-- User Overview Header Card -->
+  <div class="glass-panel" style="padding: 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+    <div style="display: flex; align-items: center; gap: 20px;">
+      <div style="width: 72px; height: 72px; border-radius: 20px; background: linear-gradient(135deg, var(--cyan-primary) 0%, var(--green-energy) 100%); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 2rem; font-weight: 800; color: #070A12; box-shadow: 0 0 25px var(--cyan-glow);">
+        S
+      </div>
+      <div>
+        <h2 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800;">Srujana</h2>
+        <div style="color: var(--text-muted); font-size: 0.95rem; margin-top: 2px;">
+          House 101 • Prosumer (Solar Array + Battery Storage)
+        </div>
+        <div style="margin-top: 8px;">
+          <span class="badge badge-both">Active Node</span>
+          <span style="font-size: 0.8rem; color: var(--text-muted); margin-left: 10px;">Joined {{ profile_data.joinedDate or 'January 2025' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wallet-badge" style="padding: 14px 24px;">
+      <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"></path><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"></path><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4z"></path></svg>
+      <div>
+        <div style="font-size: 0.75rem; color: var(--text-muted);">Current Wallet Balance</div>
+        <strong style="font-size: 1.4rem;">₹{{ "%.2f"|format(profile_data.walletBalance) }}</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detailed Energy Statistics Grid -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+    <!-- Today Consumption -->
+    <div class="glass-panel" style="padding: 20px;">
+      <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Today's Consumption</div>
+      <div style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--text-main); margin-top: 6px;">
+        {{ profile_data.todayConsumption }} <span style="font-size: 0.9rem; color: var(--text-muted);">kWh</span>
+      </div>
+    </div>
+
+    <!-- Monthly Consumption -->
+    <div class="glass-panel" style="padding: 20px;">
+      <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Monthly Consumption</div>
+      <div style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--text-main); margin-top: 6px;">
+        {{ profile_data.monthlyConsumption }} <span style="font-size: 0.9rem; color: var(--text-muted);">kWh</span>
+      </div>
+    </div>
+
+    <!-- Yearly Consumption -->
+    <div class="glass-panel" style="padding: 20px;">
+      <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Yearly Consumption</div>
+      <div style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--text-main); margin-top: 6px;">
+        {{ profile_data.yearlyConsumption }} <span style="font-size: 0.9rem; color: var(--text-muted);">kWh</span>
+      </div>
+    </div>
+
+    <!-- Solar Energy Generated -->
+    <div class="glass-panel" style="padding: 20px; border-left: 4px solid var(--green-energy);">
+      <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Energy Generated (Today)</div>
+      <div style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--green-energy); margin-top: 6px;">
+        {{ profile_data.energyGenerated }} <span style="font-size: 0.9rem; color: var(--text-muted);">kWh</span>
+      </div>
+    </div>
+
+    <!-- Energy Shared / Sold -->
+    <div class="glass-panel" style="padding: 20px; border-left: 4px solid var(--cyan-primary);">
+      <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Energy Shared / Sold</div>
+      <div style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--cyan-primary); margin-top: 6px;">
+        {{ profile_data.energyShared }} <span style="font-size: 0.9rem; color: var(--text-muted);">kWh</span>
+      </div>
+    </div>
+
+    <!-- Energy Purchased -->
+    <div class="glass-panel" style="padding: 20px; border-left: 4px solid var(--orange-solar);">
+      <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Energy Purchased</div>
+      <div style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--orange-solar); margin-top: 6px;">
+        {{ profile_data.energyPurchased }} <span style="font-size: 0.9rem; color: var(--text-muted);">kWh</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Smart Meter & Hardware Specs -->
+  <div class="glass-panel" style="padding: 28px;">
+    <h3 style="font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; margin-bottom: 16px;">Household Smart Meter & Hardware Configuration</h3>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+      <div style="background: rgba(10,15,26,0.5); padding: 14px; border-radius: 12px; border: 1px solid var(--border-glass);">
+        <label style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Rooftop Solar Capacity</label>
+        <div style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-top: 4px;">{{ profile_data.solarCapacity or '5.5 kW peak' }}</div>
+      </div>
+
+      <div style="background: rgba(10,15,26,0.5); padding: 14px; border-radius: 12px; border: 1px solid var(--border-glass);">
+        <label style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Battery Energy Storage (BESS)</label>
+        <div style="font-size: 1rem; font-weight: 700; color: var(--green-energy); margin-top: 4px;">{{ profile_data.batteryStorage or '10.0 kWh (82% charged)' }}</div>
+      </div>
+
+      <div style="background: rgba(10,15,26,0.5); padding: 14px; border-radius: 12px; border: 1px solid var(--border-glass);">
+        <label style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">AI Smart Meter Status</label>
+        <div style="font-size: 1rem; font-weight: 700; color: var(--cyan-primary); margin-top: 4px;">Online (Firmware v2.4)</div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

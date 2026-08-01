@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block title %}P2P Energy Trading | GreenGrid AI{% endblock %}
+
+{% block content %}
+<div style="max-width: 800px; margin: 0 auto;">
+  <div style="margin-bottom: 24px;">
+    <h2 style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700;">Peer-to-Peer Energy Trading Terminal</h2>
+    <p style="color: var(--text-muted); font-size: 0.9rem;">Purchase surplus solar power directly from neighboring households in real time.</p>
+  </div>
+
+  <div class="glass-panel" style="padding: 32px;">
+    <form id="tradeForm">
+      <!-- Seller Selection -->
+      <div style="margin-bottom: 24px;">
+        <label style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Select Neighborhood Seller</label>
+        <select id="sellerSelect" class="input-wrapper" style="width: 100%; padding: 14px 16px; background: rgba(10, 15, 26, 0.8); border: 1px solid var(--border-glass); border-radius: 14px; color: var(--text-main); font-size: 1rem; font-family: var(--font-main); outline: none;" required>
+          {% set req_seller = request.args.get('seller') %}
+          {% for seller in sellers %}
+            <option value="{{ seller.username }}" 
+                    data-price="{{ seller.pricePerKwh }}" 
+                    data-available="{{ seller.availableEnergy }}"
+                    {% if req_seller == seller.username %}selected{% elif loop.first and not req_seller %}selected{% endif %}>
+              {{ seller.name }} (House {{ seller.houseNumber }}) — {{ seller.availableEnergy }} kWh available @ ₹{{ seller.pricePerKwh }}/kWh
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!-- Seller Live Specs Banner -->
+      <div class="energy-stats-box" style="margin-bottom: 28px; padding: 18px;">
+        <div class="stat-item">
+          <label>Available Energy</label>
+          <span id="maxAvailableDisplay" style="color: var(--green-energy);">0 kWh</span>
+        </div>
+        <div class="stat-item">
+          <label>Price per kWh</label>
+          <span id="priceDisplay" style="color: var(--orange-solar);">₹0.00</span>
+        </div>
+        <div class="stat-item">
+          <label>Estimated Carbon Offset</label>
+          <span id="carbonOffsetDisplay" style="color: var(--cyan-primary);">0.0 kg CO₂</span>
+        </div>
+      </div>
+
+      <!-- Quantity Selection -->
+      <div style="margin-bottom: 28px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <label style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Trading Quantity (kWh)</label>
+          <span style="font-size: 0.85rem; color: var(--cyan-primary); font-weight: 600;">Slider or Numeric Input</span>
+        </div>
+
+        <div style="display: flex; gap: 16px; align-items: center;">
+          <input type="range" id="quantitySlider" min="1" max="25" value="5" step="1" style="flex: 1; accent-color: var(--cyan-primary); cursor: pointer;">
+          <input type="number" id="quantityInput" min="1" max="50" value="5" style="width: 100px; padding: 10px 14px; background: rgba(10, 15, 26, 0.8); border: 1px solid var(--border-glass); border-radius: 12px; color: var(--text-main); font-size: 1.1rem; font-weight: 700; text-align: center;">
+        </div>
+      </div>
+
+      <!-- Total Price Breakdown Box -->
+      <div style="background: rgba(0, 242, 254, 0.05); border: 1px solid rgba(0, 242, 254, 0.2); padding: 20px; border-radius: 16px; margin-bottom: 28px; display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Total Transaction Cost</div>
+          <div style="font-size: 0.78rem; color: var(--text-dim); margin-top: 2px;">Deducted from Srujana's Wallet Balance</div>
+        </div>
+        <div id="totalDisplay" style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; color: var(--cyan-primary);">
+          ₹0.00
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" id="confirmPurchaseBtn" class="btn-primary" style="width: 100%; justify-content: center; padding: 16px; font-size: 1.05rem;">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+        Confirm P2P Energy Purchase
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Transaction Success Modal -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal-content" style="text-align: center;">
+    <div style="width: 60px; height: 60px; border-radius: 50%; background: rgba(0, 255, 157, 0.15); border: 2px solid var(--green-energy); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; box-shadow: 0 0 25px var(--green-glow);">
+      <svg viewBox="0 0 24 24" width="32" height="32" stroke="var(--green-energy)" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    </div>
+
+    <h3 style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; margin-bottom: 6px;">P2P Energy Purchase Confirmed!</h3>
+    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px;">Your transaction has been recorded on the microgrid ledger.</p>
+
+    <div style="background: rgba(10, 15, 26, 0.6); padding: 16px; border-radius: 14px; border: 1px solid var(--border-glass); text-align: left; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px;">
+      <div style="display: flex; justify-content: space-between; font-size: 0.88rem;">
+        <span style="color: var(--text-muted);">Transaction ID:</span>
+        <strong id="modalTxnId" style="color: var(--cyan-primary);">--</strong>
+      </div>
+      <div style="display: flex; justify-content: space-between; font-size: 0.88rem;">
+        <span style="color: var(--text-muted);">Seller Node:</span>
+        <span id="modalSeller">--</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; font-size: 0.88rem;">
+        <span style="color: var(--text-muted);">Energy Transfer:</span>
+        <span id="modalEnergy" style="color: var(--green-energy); font-weight: 700;">--</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; font-size: 0.88rem; border-top: 1px dashed var(--border-glass); padding-top: 8px;">
+        <span style="color: var(--text-muted);">Total Amount Paid:</span>
+        <strong id="modalTotal" style="color: var(--cyan-primary); font-size: 1.1rem;">--</strong>
+      </div>
+    </div>
+
+    <button id="modalCloseBtn" class="btn-primary" style="width: 100%; justify-content: center;">
+      Return to Dashboard
+    </button>
+  </div>
+</div>
+{% endblock %}

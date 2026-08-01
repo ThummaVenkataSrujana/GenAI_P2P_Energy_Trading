@@ -1,0 +1,531 @@
+{
+  "currentUser": {
+    "username": "srujana",
+    "name": "Srujana",
+    "houseNumber": "101",
+    "role": "Prosumer (Solar + Grid)",
+    "walletBalance": 900.0,
+    "todayConsumption": 14.2,
+    "weeklyConsumption": 98.5,
+    "monthlyConsumption": 412.0,
+    "yearlyConsumption": 4850.0,
+    "availableEnergy": 12.0,
+    "currentDemand": 4.5,
+    "pricePerKwh": 12.0,
+    "energyGenerated": 26.2,
+    "energyShared": 14.0,
+    "energyPurchased": 60.5,
+    "solarCapacity": "5.5 kW peak",
+    "batteryStorage": "10.0 kWh (82% charged)",
+    "joinedDate": "January 2025"
+  },
+  "members": [
+    {
+      "id": "m101",
+      "username": "srujana",
+      "name": "Srujana",
+      "houseNumber": "101",
+      "availableEnergy": 7.0,
+      "currentDemand": 4.5,
+      "pricePerKwh": 12.0,
+      "status": "Both",
+      "walletBalance": 900.0,
+      "energySold": 19.0,
+      "energyBought": 60.5,
+      "coordinates": {
+        "x": 160,
+        "y": 140
+      },
+      "solarCapacity": "5.5 kW"
+    },
+    {
+      "id": "m102",
+      "username": "bhumi",
+      "name": "Bhumi",
+      "houseNumber": "102",
+      "availableEnergy": 1.0,
+      "currentDemand": 3.0,
+      "pricePerKwh": 10.0,
+      "status": "Producer",
+      "walletBalance": 2010.0,
+      "energySold": 49.0,
+      "energyBought": 4.0,
+      "coordinates": {
+        "x": 440,
+        "y": 120
+      },
+      "solarCapacity": "7.0 kW"
+    },
+    {
+      "id": "m103",
+      "username": "yashu",
+      "name": "Yashu",
+      "houseNumber": "103",
+      "availableEnergy": 7.0,
+      "currentDemand": 8.2,
+      "pricePerKwh": 11.0,
+      "status": "Consumer",
+      "walletBalance": 920.0,
+      "energySold": 5.0,
+      "energyBought": 28.0,
+      "coordinates": {
+        "x": 620,
+        "y": 240
+      },
+      "solarCapacity": "3.0 kW"
+    },
+    {
+      "id": "m104",
+      "username": "harshi",
+      "name": "Harshi",
+      "houseNumber": "104",
+      "availableEnergy": 9.0,
+      "currentDemand": 6.5,
+      "pricePerKwh": 13.0,
+      "status": "Both",
+      "walletBalance": 1495.0,
+      "energySold": 24.0,
+      "energyBought": 12.0,
+      "coordinates": {
+        "x": 580,
+        "y": 440
+      },
+      "solarCapacity": "6.0 kW"
+    },
+    {
+      "id": "m105",
+      "username": "meghana",
+      "name": "Meghana",
+      "houseNumber": "105",
+      "availableEnergy": 10.0,
+      "currentDemand": 5.0,
+      "pricePerKwh": 12.0,
+      "status": "Both",
+      "walletBalance": 1100.0,
+      "energySold": 15.0,
+      "energyBought": 15.0,
+      "coordinates": {
+        "x": 380,
+        "y": 500
+      },
+      "solarCapacity": "4.8 kW"
+    },
+    {
+      "id": "m106",
+      "username": "pranavi",
+      "name": "Pranavi",
+      "houseNumber": "106",
+      "availableEnergy": 2.0,
+      "currentDemand": 2.5,
+      "pricePerKwh": 9.0,
+      "status": "Producer",
+      "walletBalance": 2330.0,
+      "energySold": 65.0,
+      "energyBought": 2.0,
+      "coordinates": {
+        "x": 180,
+        "y": 420
+      },
+      "solarCapacity": "8.5 kW"
+    },
+    {
+      "id": "m107",
+      "username": "pooji",
+      "name": "Pooji",
+      "houseNumber": "107",
+      "availableEnergy": 16.0,
+      "currentDemand": 4.0,
+      "pricePerKwh": 11.0,
+      "status": "Both",
+      "walletBalance": 1680.0,
+      "energySold": 24.0,
+      "energyBought": 9.0,
+      "coordinates": {
+        "x": 100,
+        "y": 280
+      },
+      "solarCapacity": "6.2 kW"
+    }
+  ],
+  "charts": {
+    "weekly": {
+      "labels": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "consumption": [
+        12.4,
+        15.1,
+        13.8,
+        14.2,
+        16.5,
+        18.2,
+        18.3
+      ],
+      "generation": [
+        22.0,
+        24.5,
+        20.1,
+        26.2,
+        28.0,
+        21.4,
+        19.8
+      ]
+    },
+    "monthly": {
+      "labels": [
+        "Week 1",
+        "Week 2",
+        "Week 3",
+        "Week 4"
+      ],
+      "consumption": [
+        95.0,
+        102.5,
+        110.2,
+        104.3
+      ],
+      "generation": [
+        160.0,
+        175.4,
+        168.9,
+        158.2
+      ]
+    },
+    "yearly": {
+      "labels": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+      ],
+      "consumption": [
+        380,
+        360,
+        390,
+        420,
+        450,
+        490,
+        510,
+        480,
+        430,
+        410,
+        370,
+        390
+      ],
+      "generation": [
+        420,
+        450,
+        520,
+        580,
+        640,
+        680,
+        660,
+        610,
+        540,
+        490,
+        430,
+        410
+      ]
+    }
+  },
+  "transactions": [
+    {
+      "id": "TXN-6243",
+      "date": "2026-08-01 12:07",
+      "buyer": "Srujana (House 101)",
+      "seller": "Harshi (House 104)",
+      "energy": 5.0,
+      "price": 13.0,
+      "total": 65.0,
+      "status": "Completed"
+    },
+    {
+      "id": "TXN-REQ-5192",
+      "date": "2026-08-01 11:49",
+      "buyer": "Harshi (House 104)",
+      "seller": "Srujana (House 101)",
+      "energy": 5.0,
+      "price": 13.0,
+      "total": 65.0,
+      "status": "Completed"
+    },
+    {
+      "id": "TXN-5175",
+      "date": "2026-08-01 11:49",
+      "buyer": "Srujana (House 101)",
+      "seller": "Bhumi (House 102)",
+      "energy": 2.0,
+      "price": 10.0,
+      "total": 20.0,
+      "status": "Completed"
+    },
+    {
+      "id": "TXN-4900",
+      "date": "2026-08-01 11:45",
+      "buyer": "Srujana (House 101)",
+      "seller": "Bhumi (House 102)",
+      "energy": 5.0,
+      "price": 10.0,
+      "total": 50.0,
+      "status": "Completed"
+    },
+    {
+      "id": "TXN-9227",
+      "date": "2026-08-01 10:10",
+      "buyer": "Srujana (House 101)",
+      "seller": "Bhumi (House 102)",
+      "energy": 5.0,
+      "price": 10.0,
+      "total": 50.0,
+      "status": "Completed"
+    },
+    {
+      "id": "TXN-4066",
+      "date": "2026-07-31 18:51",
+      "buyer": "Srujana (House 101)",
+      "seller": "Pranavi (House 106)",
+      "energy": 5.0,
+      "price": 9.0,
+      "total": 45.0,
+      "status": "Completed"
+    },
+    {
+      "id": "TXN-3840",
+      "date": "2026-07-31 18:47",
+      "buyer": "Srujana (House 101)",
+      "seller": "Pranavi (House 106)",
+      "energy": 5.0,
+      "price": 9.0,
+      "total": 45.0,
+      "status": "Completed"
+    },
+    {
+      "id": "TXN-3285",
+      "date": "2026-07-31 18:38",
+      "buyer": "Srujana (House 101)",
+      "seller": "Pranavi (House 106)",
+      "energy": 5.0,
+      "price": 9.0,
+      "total": 45.0,
+      "status": "Completed"
+    },
+    {
+      "id": "TXN-899",
+      "date": "2026-07-31 15:11",
+      "buyer": "Srujana (House 101)",
+      "seller": "Bhumi (House 102)",
+      "energy": 5.0,
+      "price": 10.0,
+      "total": 50.0,
+      "status": "Completed"
+    },
+    {
+      "id": "TXN-983",
+      "date": "2026-07-31 12:26",
+      "buyer": "Srujana (House 101)",
+      "seller": "Pranavi (House 106)",
+      "energy": 5.0,
+      "price": 9.0,
+      "total": 45.0,
+      "status": "Completed"
+    },
+    {
+      "id": "TXN-9021",
+      "date": "2026-07-30 14:22",
+      "buyer": "Srujana (House 101)",
+      "seller": "Pranavi (House 106)",
+      "energy": 6.0,
+      "price": 9.0,
+      "total": 54.0,
+      "status": "Completed"
+    }
+  ],
+  "energyRequests": [
+    {
+      "id": "REQ-1041",
+      "requester": "Harshi",
+      "houseNumber": "104",
+      "amount": 5.0,
+      "offeredPrice": 13.0,
+      "timestamp": "10 minutes ago",
+      "status": "Accepted",
+      "message": "Need 5 kWh to balance evening peak EV load."
+    }
+  ],
+  "notifications": [
+    {
+      "id": "NOTIF-10",
+      "title": "P2P Purchase Completed",
+      "message": "Srujana bought 5.0 kWh from Harshi for \u20b965.0.",
+      "type": "trade",
+      "time": "Just now",
+      "unread": true
+    },
+    {
+      "id": "NOTIF-9",
+      "title": "P2P Purchase Completed",
+      "message": "Srujana bought 2.0 kWh from Bhumi for \u20b920.0.",
+      "type": "trade",
+      "time": "Just now",
+      "unread": true
+    },
+    {
+      "id": "NOTIF-8",
+      "title": "P2P Purchase Completed",
+      "message": "Srujana bought 5.0 kWh from Bhumi for \u20b950.0.",
+      "type": "trade",
+      "time": "Just now",
+      "unread": true
+    },
+    {
+      "id": "NOTIF-7",
+      "title": "P2P Purchase Completed",
+      "message": "Srujana bought 5.0 kWh from Bhumi for \u20b950.0.",
+      "type": "trade",
+      "time": "Just now",
+      "unread": true
+    },
+    {
+      "id": "NOTIF-6",
+      "title": "P2P Purchase Completed",
+      "message": "Srujana bought 5.0 kWh from Pranavi for \u20b945.0.",
+      "type": "trade",
+      "time": "Just now",
+      "unread": true
+    },
+    {
+      "id": "NOTIF-5",
+      "title": "P2P Purchase Completed",
+      "message": "Srujana bought 5.0 kWh from Pranavi for \u20b945.0.",
+      "type": "trade",
+      "time": "Just now",
+      "unread": true
+    },
+    {
+      "id": "NOTIF-4",
+      "title": "P2P Purchase Completed",
+      "message": "Srujana bought 5.0 kWh from Pranavi for \u20b945.0.",
+      "type": "trade",
+      "time": "Just now",
+      "unread": true
+    },
+    {
+      "id": "NOTIF-3",
+      "title": "P2P Purchase Completed",
+      "message": "Srujana bought 5.0 kWh from Bhumi for \u20b950.0.",
+      "type": "trade",
+      "time": "Just now",
+      "unread": true
+    },
+    {
+      "id": "NOTIF-2",
+      "title": "P2P Purchase Completed",
+      "message": "Srujana bought 5.0 kWh from Pranavi for \u20b945.0.",
+      "type": "trade",
+      "time": "Just now",
+      "unread": true
+    },
+    {
+      "id": "NOTIF-1",
+      "title": "Energy Request",
+      "message": "Harshi (House 104) requested 5 kWh at \u20b913/kWh.",
+      "type": "request",
+      "time": "10 mins ago",
+      "unread": true,
+      "reqId": "REQ-1041"
+    }
+  ],
+  "aiPrediction": {
+    "tomorrowGeneration": 24.0,
+    "tomorrowConsumption": 17.0,
+    "expectedSurplus": 7.0,
+    "expectedShortage": 0.0,
+    "peakDemandWindow": "4:00 PM - 7:30 PM",
+    "suggestedAction": "Sell approximately 5 kWh during peak demand window (4 PM - 7 PM) at \u20b912/kWh for maximum revenue.",
+    "modelName": "GreenGrid GenAI Prototype v1.4",
+    "confidenceScore": "94.8%"
+  },
+  "houseAppliances": [
+    {
+      "name": "HVAC / Central Air Conditioner",
+      "powerKw": 1.8,
+      "dailyKwh": 5.8,
+      "percentage": 41,
+      "isHighest": true
+    },
+    {
+      "name": "EV Home Charger (Level 2)",
+      "powerKw": 3.3,
+      "dailyKwh": 4.2,
+      "percentage": 30,
+      "isHighest": false
+    },
+    {
+      "name": "Refrigerator & Deep Freezer",
+      "powerKw": 0.35,
+      "dailyKwh": 2.1,
+      "percentage": 15,
+      "isHighest": false
+    },
+    {
+      "name": "Smart Lighting & Ceiling Fans",
+      "powerKw": 0.2,
+      "dailyKwh": 1.5,
+      "percentage": 11,
+      "isHighest": false
+    },
+    {
+      "name": "Home Entertainment & Computers",
+      "powerKw": 0.1,
+      "dailyKwh": 0.6,
+      "percentage": 3,
+      "isHighest": false
+    }
+  ],
+  "helpdeskTickets": [
+    {
+      "id": "TICKET-4066",
+      "user": "Srujana (House 101)",
+      "username": "srujana",
+      "category": "Smart Meter & Hardware",
+      "subject": "open ticket for smart meter sync issue",
+      "status": "In Progress",
+      "created": "2026-07-31 18:51",
+      "assignedTo": "Support Specialist Srujana (+91 98765 43210)"
+    },
+    {
+      "id": "TICKET-3840",
+      "user": "Srujana (House 101)",
+      "username": "srujana",
+      "category": "Smart Meter & Hardware",
+      "subject": "open ticket for smart meter sync issue",
+      "status": "In Progress",
+      "created": "2026-07-31 18:47",
+      "assignedTo": "Support Specialist Srujana (+91 98765 43210)"
+    },
+    {
+      "id": "TICKET-1001",
+      "user": "Srujana (House 101)",
+      "username": "srujana",
+      "category": "Smart Meter Calibration",
+      "subject": "Solar meter sync calibration check",
+      "status": "In Progress",
+      "created": "2026-07-31 10:15",
+      "assignedTo": "Support Admin (+91 98765 43210)"
+    }
+  ]
+}

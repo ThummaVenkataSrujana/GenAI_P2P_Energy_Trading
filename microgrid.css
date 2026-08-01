@@ -1,0 +1,71 @@
+/* Microgrid Visualization CSS */
+.microgrid-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.microgrid-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-card);
+  padding: 16px 24px;
+  border-radius: 16px;
+  border: 1px solid var(--border-glass);
+}
+
+.map-controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.legend-dot.producer { background: var(--green-energy); box-shadow: 0 0 8px var(--green-energy); }
+.legend-dot.hub { background: var(--cyan-primary); box-shadow: 0 0 8px var(--cyan-primary); }
+.legend-dot.consumer { background: var(--orange-solar); box-shadow: 0 0 8px var(--orange-solar); }
+
+.canvas-container {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  background: radial-gradient(circle at center, rgba(14, 25, 45, 0.9) 0%, rgba(7, 10, 18, 0.95) 100%);
+  border-radius: 20px;
+  border: 1px solid var(--border-glow);
+  overflow: hidden;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.6);
+}
+
+#microgridCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.node-tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: rgba(10, 15, 26, 0.9);
+  border: 1px solid var(--border-glow);
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.82rem;
+  color: var(--text-main);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  display: none;
+  z-index: 10;
+}
